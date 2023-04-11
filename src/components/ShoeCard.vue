@@ -7,8 +7,23 @@
       {{subtitle}}
     </v-card-subtitle>
     <v-card-text>
-      {{text}}
+      <v-chip-group>
+        <v-chip
+          v-for="size in sizes"
+        >
+          {{size.size}}  {{size.quantity}} pcs
+        </v-chip>
+      </v-chip-group>
     </v-card-text>
+    <v-card-actions>
+      <v-btn variant="text">
+        Add to cart
+      </v-btn>
+
+      <v-btn variant="plain">
+        Edit
+      </v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -18,7 +33,7 @@ export default {
   props: [
       'title',
       'subtitle',
-      'text'
+      'sizes'
   ]
 }
 </script>

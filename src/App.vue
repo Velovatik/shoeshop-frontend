@@ -5,7 +5,7 @@
         <v-col
             col="12"
 
-          lg="4"
+            lg="4"
             xl="4"
             xxl="4"
           v-for="shoe in shoesData"
@@ -14,7 +14,7 @@
           <ShoeCard
             :title="shoe.title"
             :subtitle="shoe.manufacturer.manufacturerName"
-            :text="shoe.sizes"
+            :sizes="shoe.sizes"
           />
         </v-col>
       </v-row>
