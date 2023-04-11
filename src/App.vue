@@ -1,23 +1,7 @@
 <template>
   <v-app>
     <v-container>
-      <v-row>
-        <v-col
-            col="12"
-
-            lg="4"
-            xl="4"
-            xxl="4"
-          v-for="shoe in shoesData"
-          :key="shoe.id"
-        >
-          <ShoeCard
-            :title="shoe.title"
-            :subtitle="shoe.manufacturer.manufacturerName"
-            :sizes="shoe.sizes"
-          />
-        </v-col>
-      </v-row>
+      <router-view />
     </v-container>
   </v-app>
 </template>

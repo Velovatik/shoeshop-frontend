@@ -11,7 +11,7 @@
         <v-chip
           v-for="size in sizes"
         >
-          {{size.size}}  {{size.quantity}} pcs
+          <span class="font-weight-bold">{{size.size}}</span> &nbsp;  {{size.quantity}} pcs
         </v-chip>
       </v-chip-group>
     </v-card-text>
