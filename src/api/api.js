@@ -6,13 +6,25 @@ export const shoeApiInstance = () => axios.create({
 })
 
 const urls = {
-    all_goods: "/goods"
+    all_goods: "/goods",
+    all_manufacturers: "/manufacturers"
 }
 
 export const shoeApi = {
     getAllGoods () {
         return shoeApiInstance()
             .get(urls.all_goods)
+            .then((resp) => {
+                return resp.data
+            })
+            .catch((err) => {
+                throw err
+            })
+    },
+
+    getAllManufacturers () {
+        return shoeApiInstance()
+            .get(urls.all_manufacturers)
             .then((resp) => {
                 return resp.data
             })

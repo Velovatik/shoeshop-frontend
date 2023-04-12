@@ -1,12 +1,5 @@
 <template>
-  <v-app>
-    <v-container>
-      <v-row>
-        <v-btn
-            variant="plain"
-            @click="$router.push('/')"
-        >Главная страница</v-btn>
-      </v-row>
+
       <v-row>
         <v-col
             col="12"
@@ -24,8 +17,6 @@
           />
         </v-col>
       </v-row>
-    </v-container>
-  </v-app>
 </template>
 
 <script>

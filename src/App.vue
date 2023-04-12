@@ -1,12 +1,17 @@
 <template>
   <v-app>
-    <v-container>
-      <router-view />
-      <v-btn
-          variant="plain"
-          @click="$router.push('/goods')"
-      >Ассортимент</v-btn>
-    </v-container>
+    <v-app-bar color="primary">
+      <v-app-bar-title>Магазин</v-app-bar-title>
+      <v-tabs fixed-tabs>
+        <v-tab to="/goods">Товары</v-tab>
+        <v-tab to="/manufacturers">Поставщики</v-tab>
+      </v-tabs>
+    </v-app-bar>
+    <v-main>
+      <v-container class="mt-4">
+        <router-view />
+      </v-container>
+    </v-main>
   </v-app>
 </template>
 
