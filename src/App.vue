@@ -2,6 +2,10 @@
   <v-app>
     <v-container>
       <router-view />
+      <v-btn
+          variant="plain"
+          @click="$router.push('/goods')"
+      >Ассортимент</v-btn>
     </v-container>
   </v-app>
 </template>

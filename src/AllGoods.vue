@@ -5,7 +5,7 @@
         <v-btn
             variant="plain"
             @click="$router.push('/')"
-        >Add good</v-btn>
+        >Главная страница</v-btn>
       </v-row>
       <v-row>
         <v-col
