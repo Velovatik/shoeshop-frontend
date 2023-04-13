@@ -17,11 +17,11 @@
     </v-card-text>
     <v-card-actions>
       <v-btn variant="text">
-        Add to cart
+        В корзину
       </v-btn>
 
       <v-btn variant="plain">
-        Edit
+        Редактировать
       </v-btn>
     </v-card-actions>
   </v-card>

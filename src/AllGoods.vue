@@ -1,5 +1,9 @@
 <template>
-
+  <v-btn
+      variant="plain"
+      @click="$router.push('/newGood')"
+  >Добавить товар
+  </v-btn>
       <v-row>
         <v-col
             col="12"

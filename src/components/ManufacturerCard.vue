@@ -11,11 +11,11 @@
     </v-card-text>
     <v-card-actions>
       <v-btn variant="text">
-        Add to cart
+        Редактировать
       </v-btn>
 
       <v-btn variant="plain">
-        Edit
+        Удалить
       </v-btn>
     </v-card-actions>
   </v-card>
