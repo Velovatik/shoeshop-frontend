@@ -1,4 +1,8 @@
 <template>
+  <v-btn
+  variant="plain"
+  @click="$router.push('/newManufacturer')"
+  >Добавить поставщика</v-btn>
   <v-row>
     <v-col
         col="12"

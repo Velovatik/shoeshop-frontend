@@ -20,7 +20,9 @@
         В корзину
       </v-btn>
 
-      <v-btn variant="plain">
+      <v-btn
+          variant="plain"
+          @click="$router.push('/')">
         Редактировать
       </v-btn>
     </v-card-actions>
