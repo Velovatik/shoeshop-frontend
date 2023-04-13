@@ -7,7 +7,7 @@
   {{newShoeData}}
 
   <v-text-field
-      v-model="newShoeData.name"
+      v-model="newShoeData.title"
       :rules="rules"
       label="Наименование"
   ></v-text-field>
@@ -26,16 +26,26 @@
     <v-select
         v-model="newShoeData.manufacturer"
       label="Производитель"
-      :items="['ralf', 'puma']"
+      :items="manufacturersData"
+        item-value="id"
+        item-title="manufacturerName"
     />
   </v-form>
+
+  <v-btn
+      variant="outlined"
+      @click=""
+  >Добавить</v-btn>
 
 </template>
 
 <script>
+import {shoeApi} from "./api/api.js";
+
 export default {
   name: "NewGood",
   data: () => ({
+    manufacturersData: {},
     sex: [
       {
         type: 'MAN',
@@ -51,11 +61,14 @@ export default {
       },
     ],
     newShoeData: {
-      name: null,
+      title: null,
       sex: null,
       manufacturer: null
     }
-  })
+  }),
+  async mounted() {
+    this.manufacturersData = await shoeApi.getAllManufacturers()
+  }
 }
 </script>
 
