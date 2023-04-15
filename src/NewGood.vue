@@ -1,58 +1,64 @@
 <template>
-  <v-btn
-      variant="plain"
-      @click="$router.push('/goods')"
-  >Назад</v-btn>
-
-  {{newShoeData}}
-
-  <v-text-field
-      v-model="newShoeData.title"
-      :rules="rules"
-      label="Наименование"
-  ></v-text-field>
-
   <v-form>
-    <v-select
-        v-model="newShoeData.sex"
-        label="Пол"
-        :items="sex"
-        item-title="name"
-        item-value="type"
-    />
+    <v-btn
+        variant="plain"
+        @click="$router.push('/goods')"
+    >Назад
+    </v-btn>
+
+    {{ newShoeData }}
+
+    <v-row>
+      <v-col cols="12" md="6" lg="6" xl="6" >
+        <div class="text-h6 mb-4">
+          Общие сведения
+        </div>
+
+        <v-text-field
+            v-model="newShoeData.title"
+            :rules="rules"
+            label="Наименование"
+        ></v-text-field>
+
+
+        <v-select
+            v-model="newShoeData.sex"
+            label="Пол"
+            :items="sex"
+            item-title="name"
+            item-value="type"
+        />
+        <v-select
+            v-model="newShoeData.manufacturer"
+            label="Производитель"
+            :items="manufacturersData"
+            item-value="id"
+            item-title="manufacturerName"
+        />
+
+        <v-btn
+            variant="outlined"
+            @click=""
+        >Добавить
+        </v-btn>
+      </v-col>
+
+      <v-col cols="12" md="6" lg="6" xl="6">
+        <div class="text-h6 mb-4">
+          Размеры
+        </div>
+
+        <SizesAdder class="mb-8" v-on:sizeChange="updateSizes" />
+      </v-col>
+    </v-row>
+
+
   </v-form>
-
-  <v-form>
-    <v-select
-        v-model="newShoeData.manufacturer"
-      label="Производитель"
-      :items="manufacturersData"
-        item-value="id"
-        item-title="manufacturerName"
-    />
-  </v-form>
-
-  <v-text-field
-      v-model="newShoeData.sizes.size"
-      :rules="rules"
-      label="Размер"
-  ></v-text-field>
-
-  <v-text-field
-      v-model="newShoeData.sizes.quantity"
-      :rules="rules"
-      label="Количество"
-  ></v-text-field>
-
-  <v-btn
-      variant="outlined"
-      @click=""
-  >Добавить</v-btn>
-
 </template>
 
 <script>
 import {shoeApi} from "./api/api.js";
+import SizesAdder from "./components/SizesAdder.vue";
 
 export default {
   name: "NewGood",
@@ -76,12 +82,17 @@ export default {
       title: null,
       sex: null,
       manufacturer: null,
-      sizes: {
-        size: null,
-        quantity: null
-      }
+      sizes: null
     }
   }),
+  components: {
+    SizesAdder
+  },
+  methods: {
+    updateSizes(sizes) {
+      this.newShoeData.sizes = sizes
+    }
+  },
   async mounted() {
     this.manufacturersData = await shoeApi.getAllManufacturers()
   }
