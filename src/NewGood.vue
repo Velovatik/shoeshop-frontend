@@ -32,6 +32,18 @@
     />
   </v-form>
 
+  <v-text-field
+      v-model="newShoeData.sizes.size"
+      :rules="rules"
+      label="Размер"
+  ></v-text-field>
+
+  <v-text-field
+      v-model="newShoeData.sizes.quantity"
+      :rules="rules"
+      label="Количество"
+  ></v-text-field>
+
   <v-btn
       variant="outlined"
       @click=""
@@ -63,7 +75,11 @@ export default {
     newShoeData: {
       title: null,
       sex: null,
-      manufacturer: null
+      manufacturer: null,
+      sizes: {
+        size: null,
+        quantity: null
+      }
     }
   }),
   async mounted() {
