@@ -38,7 +38,7 @@
 
         <v-btn
             variant="outlined"
-            @click="postNewManufacturer()"
+            @click="postNewGood()"
         >Добавить
         </v-btn>
       </v-col>
@@ -93,8 +93,8 @@ export default {
     updateSizes(sizes) {
       this.newShoeData.sizes = sizes
     },
-    postNewManufacturer() {
-      shoeApi.postNewManufacturer({
+    postNewGood() {
+      shoeApi.postNewGood({
         title: this.newShoeData.title,
         sex: this.newShoeData.sex,
         manufacturerId: this.newShoeData.manufacturerId,

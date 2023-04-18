@@ -33,7 +33,7 @@ export const shoeApi = {
             })
     },
 
-    postNewManufacturer({title, sex, manufacturerId, sizes}) {
+    postNewGood({title, sex, manufacturerId, sizes}) {
        return shoeApiInstance()
            .post(urls.all_goods, {
                title : title,
@@ -47,5 +47,20 @@ export const shoeApi = {
            .catch((err) => {
                throw err;
            })
+    },
+
+    postNewManufacturer({manufacturerName, address, telephone}) {
+        return shoeApiInstance()
+            .post(urls.all_manufacturers, {
+                manufacturerName : manufacturerName,
+                address : address,
+                telephone : telephone,
+            })
+            .then((resp) => {
+                return resp.data;
+            })
+            .catch((err) => {
+                throw err;
+            })
     }
 }

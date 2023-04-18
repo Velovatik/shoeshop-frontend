@@ -26,12 +26,14 @@
 
   <v-btn
   variant="outlined"
-  @click=""
+  @click="postNewManufacturer()"
   >Добавить</v-btn>
 
 </template>
 
 <script>
+import {shoeApi} from "./api/api.js";
+
 export default {
   name: "NewManufacturer",
   data: () => ({newManufacturerData: {
@@ -39,7 +41,17 @@ export default {
       address: null,
       telephone: null
     }
-  })
+  }),
+  methods: {
+    postNewManufacturer() {
+      shoeApi.postNewManufacturer({
+        manufacturerName: this.newManufacturerData.manufacturerName,
+        address: this.newManufacturerData.address,
+        telephone: this.newManufacturerData.telephone
+          }
+      )
+    }
+  }
 }
 </script>
 
