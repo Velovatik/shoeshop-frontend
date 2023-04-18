@@ -31,5 +31,21 @@ export const shoeApi = {
             .catch((err) => {
                 throw err
             })
+    },
+
+    postNewManufacturer({title, sex, manufacturerId, sizes}) {
+       return shoeApiInstance()
+           .post(urls.all_goods, {
+               title : title,
+               sex : sex,
+               manufacturerId : manufacturerId,
+               sizes : sizes
+           })
+           .then((resp) => {
+               return resp.data;
+           })
+           .catch((err) => {
+               throw err;
+           })
     }
 }

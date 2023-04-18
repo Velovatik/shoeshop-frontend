@@ -29,7 +29,7 @@
             item-value="type"
         />
         <v-select
-            v-model="newShoeData.manufacturer"
+            v-model="newShoeData.manufacturerId"
             label="Производитель"
             :items="manufacturersData"
             item-value="id"
@@ -38,7 +38,7 @@
 
         <v-btn
             variant="outlined"
-            @click=""
+            @click="postNewManufacturer()"
         >Добавить
         </v-btn>
       </v-col>
@@ -63,7 +63,8 @@ import SizesAdder from "./components/SizesAdder.vue";
 export default {
   name: "NewGood",
   data: () => ({
-    manufacturersData: {},
+    manufacturersData: {
+    },
     sex: [
       {
         type: 'MAN',
@@ -81,7 +82,7 @@ export default {
     newShoeData: {
       title: null,
       sex: null,
-      manufacturer: null,
+      manufacturerId: null,
       sizes: null
     }
   }),
@@ -91,6 +92,14 @@ export default {
   methods: {
     updateSizes(sizes) {
       this.newShoeData.sizes = sizes
+    },
+    postNewManufacturer() {
+      shoeApi.postNewManufacturer({
+        title: this.newShoeData.title,
+        sex: this.newShoeData.sex,
+        manufacturerId: this.newShoeData.manufacturerId,
+        sizes: this.newShoeData.sizes
+      })
     }
   },
   async mounted() {
