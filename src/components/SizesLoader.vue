@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-row
-      v-for="size in sizes"
-      :key="size"
+        v-for="size in sizes"
+        :key="size"
     >
       <v-col>
         <v-text-field
@@ -31,15 +31,16 @@
 
 <script>
 export default {
-  name: "SizesAdder",
+  name: "SizesLoader",
   data() {
     return {
-      sizes: [],
+      //sizes: [],
     }
   },
-  props: [
-    'defaultSizes',
-  ],
+  props: {
+    //'defaultSizes',
+    sizes: {}
+  },
   mounted() {
     this.addSize()
   },
@@ -51,6 +52,9 @@ export default {
             quantity: null
           }
       )
+    },
+    loadSize() {
+
     }
   },
   watch: {

@@ -3,11 +3,13 @@ import AllGoods from "./AllGoods.vue";
 import AllManufacturers from "./AllManufacturers.vue";
 import NewGood from "./NewGood.vue";
 import NewManufacturer from "./NewManufacturer.vue";
+import EditGood from "./EditGood.vue";
 
 export const routes = [
     { path: '/', component: App },
     {path: '/goods', component: AllGoods},
     {path: '/manufacturers', component: AllManufacturers},
     {path: '/newGood', component: NewGood},
-    {path: '/newManufacturer', component: NewManufacturer}
+    {path: '/newManufacturer', component: NewManufacturer},
+    {path: '/editManufacturer/:id', component: EditGood}
 ]

@@ -18,6 +18,7 @@
               :title="shoe.title"
               :subtitle="shoe.manufacturer.manufacturerName"
               :sizes="shoe.sizes"
+              :id="shoe.id"
           />
         </v-col>
       </v-row>

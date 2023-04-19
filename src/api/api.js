@@ -49,6 +49,17 @@ export const shoeApi = {
            })
     },
 
+    getGood(id) {
+        return shoeApiInstance()
+            .get(urls.all_goods + "/" + id)
+            .then((resp) => {
+                return resp.data
+            })
+            .catch((err) => {
+                throw err
+            })
+    },
+
     postNewManufacturer({manufacturerName, address, telephone}) {
         return shoeApiInstance()
             .post(urls.all_manufacturers, {

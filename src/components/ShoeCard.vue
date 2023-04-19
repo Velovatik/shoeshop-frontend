@@ -22,7 +22,7 @@
 
       <v-btn
           variant="plain"
-          @click="$router.push('/')">
+          @click="$router.push('/editManufacturer/' + this.id)">
         Редактировать
       </v-btn>
     </v-card-actions>
@@ -35,7 +35,8 @@ export default {
   props: [
       'title',
       'subtitle',
-      'sizes'
+      'sizes',
+      'id'
   ]
 }
 </script>
