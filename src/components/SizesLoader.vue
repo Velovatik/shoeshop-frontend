@@ -21,6 +21,11 @@
             density="compact"
         ></v-text-field>
       </v-col>
+
+      <v-btn
+          rounded
+          @click="removeSize(size)"
+      >-</v-btn>
     </v-row>
     <v-btn
         rounded
@@ -32,18 +37,9 @@
 <script>
 export default {
   name: "SizesLoader",
-  data() {
-    return {
-      //sizes: [],
-    }
-  },
-  props: {
-    //'defaultSizes',
-    sizes: {}
-  },
-  mounted() {
-    this.addSize()
-  },
+  props: [
+    'sizes'
+  ],
   methods: {
     addSize() {
       this.sizes.push(
@@ -53,8 +49,8 @@ export default {
           }
       )
     },
-    loadSize() {
-
+    removeSize(size) {
+      this.sizes.splice(this.sizes.indexOf(size), 1)
     }
   },
   watch: {

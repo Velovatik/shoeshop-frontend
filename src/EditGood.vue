@@ -37,9 +37,13 @@
 
         <v-btn
             variant="outlined"
-            @click="postNewGood()"
-        >Добавить
+            @click=""
+        >Сохранить изменения
         </v-btn>
+      </v-col>
+
+      <v-col cols="12" md="6" lg="6" xl="6" >
+        <SizesLoader :sizes="shoeData.sizes" />
       </v-col>
     </v-row>
 
@@ -58,9 +62,14 @@ export default {
   data() {
     return {
       editId: null,
-      shoeData: {},
-      manufacturersData: {
+      shoeData: {
+        title: null,
+        sex: null,
+        manufacturerId: null,
+        sizes: null
       },
+      manufacturersData: [
+      ],
 
       sex: [
         {
