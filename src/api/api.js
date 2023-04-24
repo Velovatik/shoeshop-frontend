@@ -60,6 +60,21 @@ export const shoeApi = {
             })
     },
 
+    postNewManufacturer({manufacturerName, address, telephone}) {
+        return shoeApiInstance()
+            .post(urls.all_manufacturers, {
+                manufacturerName : manufacturerName,
+                address : address,
+                telephone : telephone,
+            })
+            .then((resp) => {
+                return resp.data;
+            })
+            .catch((err) => {
+                throw err;
+            })
+    },
+
     updateGood({id, title, sex, manufacturerId, sizes}) {
         return shoeApiInstance()
             .patch(urls.all_goods, {
@@ -77,24 +92,10 @@ export const shoeApi = {
             })
     },
 
-    postNewManufacturer({manufacturerName, address, telephone}) {
-        return shoeApiInstance()
-            .post(urls.all_manufacturers, {
-                manufacturerName : manufacturerName,
-                address : address,
-                telephone : telephone,
-            })
-            .then((resp) => {
-                return resp.data;
-            })
-            .catch((err) => {
-                throw err;
-            })
-    },
-
-    updateManufacturer({manufacturerName, address, telephone}) {
+    updateManufacturer({id, manufacturerName, address, telephone}) {
         return shoeApiInstance()
             .patch(urls.all_manufacturers, {
+                id : id,
                 manufacturerName : manufacturerName,
                 address : address,
                 telephone : telephone,

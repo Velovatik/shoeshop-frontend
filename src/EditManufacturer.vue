@@ -5,6 +5,30 @@
   >Назад</v-btn>
 
   {{manufacturerData}}
+
+  <v-text-field
+      v-model="manufacturerData.manufacturerName"
+      :rules="rules"
+      label="Название поставщика*"
+  ></v-text-field>
+
+  <v-text-field
+      v-model="manufacturerData.address"
+      :rules="rules"
+      label="Адрес"
+  ></v-text-field>
+
+  <v-text-field
+      v-model="manufacturerData.telephone"
+      :rules="rules"
+      label="Телефон"
+  ></v-text-field>
+
+  <v-btn
+      variant="outlined"
+      @click="updateManufacturer()"
+  >Сохранить изменения</v-btn>
+
 </template>
 
 <script>
@@ -32,6 +56,7 @@ export default {
   methods: {
     updateManufacturer() {
       shoeApi.updateManufacturer({
+            id: this.manufacturerData.id,
             manufacturerName: this.manufacturerData.manufacturerName,
             address: this.manufacturerData.address,
             telephone: this.manufacturerData.telephone
