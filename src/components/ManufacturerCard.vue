@@ -18,7 +18,7 @@
 
       <v-btn
           variant="plain"
-      >
+          @click="deleteManufacturer(this.id)">
         Удалить
       </v-btn>
     </v-card-actions>
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import {shoeApi} from "../api/api.js";
+
 export default {
   name: "ManufacturerCard",
   props: [
@@ -33,8 +35,14 @@ export default {
     'title',
     'subtitle',
     'telephone'
-  ]
+  ],
+  methods: {
+    deleteManufacturer(id){
+      shoeApi.deleteManufacturer(id)
+    }
+  }
 }
+
 </script>
 
 <style scoped>

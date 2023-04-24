@@ -118,4 +118,15 @@ export const shoeApi = {
                 throw err
             })
     },
+
+    deleteManufacturer(id) {
+        return shoeApiInstance()
+            .delete(urls.all_manufacturers + "/" + id)
+            .then((resp) => {
+                return resp.data
+            })
+            .catch((err) => {
+                throw err
+            })
+    },
 }
