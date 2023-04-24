@@ -37,12 +37,16 @@
 
         <v-btn
             variant="outlined"
-            @click=""
+            @click="updateGood"
         >Сохранить изменения
         </v-btn>
       </v-col>
 
       <v-col cols="12" md="6" lg="6" xl="6" >
+        <div class="text-h6 mb-4">
+          Размеры
+        </div>
+
         <SizesLoader :sizes="shoeData.sizes" />
       </v-col>
     </v-row>
@@ -63,6 +67,7 @@ export default {
     return {
       editId: null,
       shoeData: {
+        id: null,
         title: null,
         sex: null,
         manufacturerId: null,
@@ -87,6 +92,18 @@ export default {
       ],
     }
   },
+  methods: {
+    updateGood() {
+      shoeApi.updateGood({
+        id: this.shoeData.id,
+        title: this.shoeData.title,
+        sex: this.shoeData.sex,
+        manufacturerId: this.shoeData.manufacturerId,
+        sizes: this.shoeData.sizes
+      })
+    }
+  },
+
   async mounted() {
     this.editId = this.$route.params.id
 

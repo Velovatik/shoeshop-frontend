@@ -10,11 +10,15 @@
       {{telephone}}
     </v-card-text>
     <v-card-actions>
-      <v-btn variant="text">
+      <v-btn
+          variant="text"
+          @click="$router.push('/editManufacturer/' + this.id)">
         Редактировать
       </v-btn>
 
-      <v-btn variant="plain">
+      <v-btn
+          variant="plain"
+      >
         Удалить
       </v-btn>
     </v-card-actions>
@@ -23,8 +27,9 @@
 
 <script>
 export default {
-  name: "ShoeCard",
+  name: "ManufacturerCard",
   props: [
+    'id',
     'title',
     'subtitle',
     'telephone'

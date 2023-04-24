@@ -22,7 +22,7 @@
 
       <v-btn
           variant="plain"
-          @click="$router.push('/editManufacturer/' + this.id)">
+          @click="$router.push('/editGood/' + this.id)">
         Редактировать
       </v-btn>
     </v-card-actions>

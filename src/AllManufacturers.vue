@@ -17,6 +17,7 @@
           :title="manufacturer.manufacturerName"
           :subtitle="manufacturer.address"
           :telephone="manufacturer.telephone"
+          :id="manufacturer.id"
       />
     </v-col>
   </v-row>
