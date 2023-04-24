@@ -12,13 +12,13 @@
     <v-card-actions>
       <v-btn
           variant="text"
-          @click="$router.push('/editManufacturer/' + this.id)">
+          @click="$router.push('/editManufacturer/' + id)">
         Редактировать
       </v-btn>
 
       <v-btn
           variant="plain"
-          @click="deleteManufacturer(this.id)">
+          @click="deleteManufacturer(id)">
         Удалить
       </v-btn>
     </v-card-actions>
@@ -38,7 +38,7 @@ export default {
   ],
   methods: {
     deleteManufacturer(id){
-      shoeApi.deleteManufacturer(id)
+      this.$emit("delete", id)
     }
   }
 }
