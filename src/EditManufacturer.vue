@@ -26,7 +26,7 @@
 
   <v-btn
       variant="outlined"
-      @click="updateManufacturer()"
+      @click="updateManufacturer(); $router.push('/manufacturers')"
   >Сохранить изменения</v-btn>
 
 </template>

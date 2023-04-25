@@ -25,6 +25,11 @@
           @click="$router.push('/editGood/' + this.id)">
         Редактировать
       </v-btn>
+      <v-btn variant="plain"
+             @click="deleteGood(id)"
+      >
+        Удалить
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -37,7 +42,12 @@ export default {
       'subtitle',
       'sizes',
       'id'
-  ]
+  ],
+  methods: {
+    deleteGood(id){
+      this.$emit("deleteGood", id)
+    }
+  }
 }
 </script>
 

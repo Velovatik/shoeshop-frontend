@@ -26,7 +26,7 @@
 
   <v-btn
   variant="outlined"
-  @click="postNewManufacturer()"
+  @click="postNewManufacturer(); $router.push('/manufacturers')"
   >Добавить</v-btn>
 
 </template>

@@ -37,7 +37,7 @@
 
         <v-btn
             variant="outlined"
-            @click="updateGood"
+            @click="updateGood; $router.push('/goods')"
         >Сохранить изменения
         </v-btn>
       </v-col>

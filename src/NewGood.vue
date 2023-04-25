@@ -38,7 +38,7 @@
 
         <v-btn
             variant="outlined"
-            @click="postNewGood()"
+            @click="postNewGood(); $router.push('/goods')"
         >Добавить
         </v-btn>
       </v-col>

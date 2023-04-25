@@ -9,7 +9,7 @@
         Вы уверены?
       </v-card-text>
       <v-card-actions>
-        <v-btn color="primary" @click="deleteManufacturer(dialogManufacturerId), this.$router.go()">Да</v-btn>
+        <v-btn color="primary" @click="deleteManufacturer(dialogManufacturerId); this.$router.go()">Да</v-btn>
         <v-btn color="primary" @click="dialogOpened = false">Нет</v-btn>
       </v-card-actions>
     </v-card>
