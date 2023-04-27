@@ -7,7 +7,7 @@
       {{subtitle}}
     </v-card-subtitle>
     <v-card-text>
-      <v-chip-group>
+      <v-chip-group v-model="selectedSize" selected-class="text-pink-accent-4">
         <v-chip
           v-for="size in sizes"
         >
@@ -16,7 +16,7 @@
       </v-chip-group>
     </v-card-text>
     <v-card-actions>
-      <v-btn variant="text">
+      <v-btn variant="text" @click="addToCart" :disabled="selectedSize == null">
         В корзину
       </v-btn>
 
@@ -43,9 +43,17 @@ export default {
       'sizes',
       'id'
   ],
+  data() {
+    return {
+      selectedSize: null
+    }
+  },
   methods: {
     deleteGood(id){
       this.$emit("deleteGood", id)
+    },
+    addToCart() {
+      this.$emit("addToCart", {id: this.id, size: this.sizes[this.selectedSize].size})
     }
   }
 }

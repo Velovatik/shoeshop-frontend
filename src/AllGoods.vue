@@ -35,9 +35,14 @@
               :sizes="shoe.sizes"
               :id="shoe.id"
               @deleteGood="showDialog"
+              @addToCart="addItemToCart"
           />
         </v-col>
       </v-row>
+
+  <div class="cart" v-for="purchase in getAllPurchases" :key="purchase.id">
+    <p></p>
+  </div>
 </template>
 
 <script>
@@ -45,8 +50,17 @@ import {shoeApi} from "./api/api.js";
 
 import ShoeCard from "./components/ShoeCard.vue";
 
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'App',
+  // computed: {
+  //   allPurchases() {
+  //     return this.$store.getters.allGoods;
+  //   }
+  // },\
+
+  computed: mapGetters(['getAllPurchases']), //Way of getting arr for cart from storage
   data: () => ({
     shoesData: {},
     dialogOpened: false,
@@ -68,6 +82,10 @@ export default {
     },
     deleteGood(id) {
       shoeApi.deleteGood(id)
+    },
+    addItemToCart(payload) {
+      console.log(payload)
+      this.$store.commit("addItemToCart", {id: payload.id, size: payload.size})
     }
   }
 }

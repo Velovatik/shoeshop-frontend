@@ -7,6 +7,7 @@
       <v-tabs fixed-tabs>
         <v-tab to="/goods">Товары</v-tab>
         <v-tab to="/manufacturers">Поставщики</v-tab>
+        <v-tab to="/cart">Корзина</v-tab>
       </v-tabs>
     </v-app-bar>
     <v-main>

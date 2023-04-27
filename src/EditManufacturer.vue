@@ -6,6 +6,9 @@
 
   {{manufacturerData}}
 
+  <div class="text-h6 mb-4">
+    Страница редактирования
+  </div>
   <v-text-field
       v-model="manufacturerData.manufacturerName"
       :rules="rules"

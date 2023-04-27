@@ -17,6 +17,16 @@ const vuetify = createVuetify({
 import {createRouter, createWebHashHistory} from 'vue-router'
 import {routes} from "./routes.js";
 
+import { createStore } from 'vuex'
+import cart from "./store/cart.js";
+
+const store = createStore({
+    modules: {
+        cart
+    }
+})
+
+
 const router = createRouter({
     // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
     history: createWebHashHistory(),
@@ -27,4 +37,5 @@ createApp(App)
     .use(shoeApiInstance)
     .use(vuetify)
     .use(router)
+    .use(store)
     .mount('#app')
