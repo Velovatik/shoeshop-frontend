@@ -33,11 +33,12 @@ export const shoeApi = {
             })
     },
 
-    postNewGood({title, sex, manufacturerId, sizes}) {
+    postNewGood({title, sex, price, manufacturerId, sizes}) {
        return shoeApiInstance()
            .post(urls.all_goods, {
                title : title,
                sex : sex,
+               price : price,
                manufacturerId : manufacturerId,
                sizes : sizes
            })
@@ -86,12 +87,13 @@ export const shoeApi = {
             })
     },
 
-    updateGood({id, title, sex, manufacturerId, sizes}) {
+    updateGood({id, title, sex, price, manufacturerId, sizes}) {
         return shoeApiInstance()
             .patch(urls.all_goods, {
                 id : id,
                 title : title,
                 sex : sex,
+                price : price,
                 manufacturerId : manufacturerId,
                 sizes : sizes
             })

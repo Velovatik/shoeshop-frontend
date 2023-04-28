@@ -19,6 +19,11 @@
             label="Наименование"
         ></v-text-field>
 
+        <v-text-field
+            v-model="shoeData.price"
+            :rules="rules"
+            label="Цена"
+        ></v-text-field>
 
         <v-select
             v-model="shoeData.sex"
@@ -70,6 +75,7 @@ export default {
         id: null,
         title: null,
         sex: null,
+        price: null,
         manufacturerId: null,
         sizes: null
       },
@@ -98,6 +104,7 @@ export default {
         id: this.shoeData.id,
         title: this.shoeData.title,
         sex: this.shoeData.sex,
+        price: this.shoeData.price,
         manufacturerId: this.shoeData.manufacturerId,
         sizes: this.shoeData.sizes
       })

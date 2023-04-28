@@ -20,6 +20,11 @@
             label="Наименование"
         ></v-text-field>
 
+        <v-text-field
+            v-model="newShoeData.price"
+            :rules="rules"
+            label="Цена"
+        ></v-text-field>
 
         <v-select
             v-model="newShoeData.sex"
@@ -82,6 +87,7 @@ export default {
     newShoeData: {
       title: null,
       sex: null,
+      price: null,
       manufacturerId: null,
       sizes: null
     }
@@ -97,6 +103,7 @@ export default {
       shoeApi.postNewGood({
         title: this.newShoeData.title,
         sex: this.newShoeData.sex,
+        price: this.newShoeData.price,
         manufacturerId: this.newShoeData.manufacturerId,
         sizes: this.newShoeData.sizes
       })

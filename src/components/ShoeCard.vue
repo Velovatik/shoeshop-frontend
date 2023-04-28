@@ -7,6 +7,7 @@
       {{subtitle}}
     </v-card-subtitle>
     <v-card-text>
+      {{price}} руб.
       <v-chip-group v-model="selectedSize" selected-class="text-pink-accent-4">
         <v-chip
           v-for="size in sizes"
@@ -41,6 +42,7 @@ export default {
       'title',
       'subtitle',
       'sizes',
+      'price',
       'id'
   ],
   data() {
@@ -53,7 +55,7 @@ export default {
       this.$emit("deleteGood", id)
     },
     addToCart() {
-      this.$emit("addToCart", {id: this.id, size: this.sizes[this.selectedSize].size})
+      this.$emit("addToCart", {id: this.id, price: this.price, size: this.sizes[this.selectedSize].size})
     }
   }
 }

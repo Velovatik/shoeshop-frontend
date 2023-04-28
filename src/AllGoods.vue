@@ -32,6 +32,7 @@
           <ShoeCard
               :title="shoe.title"
               :subtitle="shoe.manufacturer.manufacturerName"
+              :price="shoe.price"
               :sizes="shoe.sizes"
               :id="shoe.id"
               @deleteGood="showDialog"
@@ -85,7 +86,7 @@ export default {
     },
     addItemToCart(payload) {
       console.log(payload)
-      this.$store.commit("addItemToCart", {id: payload.id, size: payload.size})
+      this.$store.commit("addItemToCart", {id: payload.id, price: payload.price, size: payload.size})
     }
   }
 }
