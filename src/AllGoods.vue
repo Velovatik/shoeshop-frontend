@@ -85,8 +85,8 @@ export default {
       shoeApi.deleteGood(id)
     },
     addItemToCart(payload) {
-      console.log(payload)
-      this.$store.commit("addItemToCart", {id: payload.id, price: payload.price, size: payload.size})
+      this.$store.commit("addItemToCart", {id: payload.id, title: payload.title, price: payload.price,
+        size: payload.size, inStock: payload.inStock})
     }
   }
 }

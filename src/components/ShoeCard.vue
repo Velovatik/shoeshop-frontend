@@ -43,7 +43,8 @@ export default {
       'subtitle',
       'sizes',
       'price',
-      'id'
+      'id',
+      'inStock'
   ],
   data() {
     return {
@@ -55,7 +56,8 @@ export default {
       this.$emit("deleteGood", id)
     },
     addToCart() {
-      this.$emit("addToCart", {id: this.id, price: this.price, size: this.sizes[this.selectedSize].size})
+      this.$emit("addToCart", {id: this.id, title: this.title, price: this.price, size: this.sizes[this.selectedSize].size,
+        inStock: this.sizes[this.selectedSize].quantity})
     }
   }
 }

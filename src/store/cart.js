@@ -3,7 +3,8 @@ export default {
 
     },
     mutations: {
-        addItemToCart(state, {id: id, price: price, size: size}) { //Method for adding item to cart
+        addItemToCart(state, {id: id, title: title, price: price, size: size,
+        inStock: inStock}) { //Method for adding item to cart
 
             let foundId = state.purchases.find(el => el.id == id)
 
@@ -12,26 +13,27 @@ export default {
 
                 if (foundSize) {
                     foundSize.amount += 1
-                    foundId.price += price
                 }
                 else {
                     foundId.sizes.push({
                         size: size,
-                        price: price,
-                        amount: 1
+                        amount: 1,
+                        inStock: inStock
                     })
                 }
             }
             else {
                 state.purchases.push({
                     id: id,
+                    title: title,
                     price: price,
                     sizes: [
                         {
                             size: size,
-                            amount: 1
+                            amount: 1,
+                            inStock: inStock
                         }
-                    ]
+                    ],
                 });
             }
         }
