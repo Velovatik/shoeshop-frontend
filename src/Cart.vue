@@ -26,16 +26,31 @@
           <td>{{item.title}}</td>
           <td>{{size.size}}</td>
           <td>
-            <v-btn>-</v-btn>
-            <template>
-            <v-text-field
+            <v-col>
+              <v-row>
+                <v-btn
+                :disabled="size.amount <= 0"
+                rounded
+                variant="text"
+                @click="size.amount--">-</v-btn>
+            <div>
+              <v-responsive class="ma-0 pa-0" :width="`${size.amount.length}.5rem`">
+                <v-text-field
               v-model="size.amount"
               hide-details
               single-line
+              density="compact"
               type="number"
-            />
-            </template>
-              <v-btn>+</v-btn>
+                />
+              </v-responsive>
+            </div>
+              <v-btn
+                  :disabled="size.amount >= size.inStock"
+                  rounded
+                  variant="text"
+                  @click="size.amount++">+</v-btn>
+              </v-row>
+            </v-col>
 
           </td>
           <td>{{ size.amount * item.price }}</td>
