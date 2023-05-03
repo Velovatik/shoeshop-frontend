@@ -3,7 +3,8 @@
   <div v-if="itemsInCart.length===0">
     Козина пуста
   </div>
-  <v-table v-if="itemsInCart.length!==0">
+  <template v-if="itemsInCart.length!==0">
+  <v-table>
     <thead>
       <tr>
         <th>
@@ -73,9 +74,9 @@
   <v-btn
   variant="outlined"
   @click="makePurchase"
-  >
-    Оплатить
+  >Оплатить
   </v-btn>
+  </template>
 
 </template>
 
@@ -101,22 +102,25 @@ export default {
   methods: {
     async sellGood(id, size, amount) {
       await shoeApi.sellGood(
-          {id:id,
+          {
+            id:id,
             size: size,
             amount: amount
           }
       )
     },
 
-    async makePurchase() {
-      for (let item in this.itemsInCart) {
-        for (let size in item.sizes) {
-          console.log(item.id, size.size, size.amount)
-          await this.sellGood(item.id, size.size, size.amount)
-        }
+    makePurchase() {
+      this.itemsInCart.forEach((item)=>{
+        console.log({itemCharts: item})
+          Array.isArray(item.sizes) && item.sizes.forEach((size)=>{
+            this.sellGood(item.id, size.size, size.amount)
+          })
+      })
+      this.$store.state.cart.purchases=[];
+      this.$router.push('/goods');
       }
     }
-  }
 }
 
 

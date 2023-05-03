@@ -46,7 +46,7 @@ export default {
             return state.purchases;
         },
         getPurchasesQuantity(state) {
-            return state.purchases.length
+            return state?.purchases?.length
         }
     },
 }
