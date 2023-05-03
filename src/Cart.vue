@@ -1,6 +1,9 @@
 <template>
   {{itemsInCart}}
-  <v-table>
+  <div v-if="itemsInCart.length===0">
+    Козина пуста
+  </div>
+  <v-table v-if="itemsInCart.length!==0">
     <thead>
       <tr>
         <th>
@@ -33,14 +36,16 @@
                 rounded
                 variant="text"
                 @click="size.amount--">-</v-btn>
-            <div>
-              <v-responsive class="ma-0 pa-0" :width="`${size.amount.length}.5rem`">
+            <div class="justify-">
+              <v-responsive class="ma-0 pa-0" :width="`${size.amount.length}.0.2rem`">
                 <v-text-field
               v-model="size.amount"
               hide-details
               single-line
               density="compact"
               type="number"
+              :min="0"
+              :max="size.inStock"
                 />
               </v-responsive>
             </div>
@@ -53,27 +58,30 @@
             </v-col>
 
           </td>
-          <td>{{ size.amount * item.price }}</td>
+          <td>{{ size.amount * item.price }} руб.</td>
         </tr>
       </template>
       <tr class="summary">
         <td>Итого:</td>
         <td></td>
         <td></td>
-        <td>{{finalPrice}}</td>
+        <td>{{finalPrice}} руб.</td>
       </tr>
     </tbody>
   </v-table>
 
   <v-btn
-  variant="outlined">
+  variant="outlined"
+  @click="makePurchase"
+  >
     Оплатить
-
   </v-btn>
 
 </template>
 
 <script>
+import {shoeApi} from "./api/api.js";
+
 export default {
   name: "Cart",
   data() {
@@ -86,8 +94,27 @@ export default {
       return this.itemsInCart.map(item => {
         return item.price * item.sizes.map(size => {
           return size.amount
-        })
-      })[0]
+        }).reduce((a, b) => {return a + b})
+      }).reduce((a, b) => {return a + b})
+    }
+  },
+  methods: {
+    async sellGood(id, size, amount) {
+      await shoeApi.sellGood(
+          {id:id,
+            size: size,
+            amount: amount
+          }
+      )
+    },
+
+    async makePurchase() {
+      for (let item in this.itemsInCart) {
+        for (let size in item.sizes) {
+          console.log(item.id, size.size, size.amount)
+          await this.sellGood(item.id, size.size, size.amount)
+        }
+      }
     }
   }
 }

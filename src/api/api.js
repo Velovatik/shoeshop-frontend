@@ -7,7 +7,8 @@ export const shoeApiInstance = () => axios.create({
 
 const urls = {
     all_goods: "/goods",
-    all_manufacturers: "/manufacturers"
+    all_manufacturers: "/manufacturers",
+    purchase: "/purchase"
 }
 
 export const shoeApi = {
@@ -69,6 +70,17 @@ export const shoeApi = {
             })
             .catch((err) => {
                 throw err
+            })
+    },
+
+    sellGood({id, size, amount}) {
+        return shoeApiInstance()
+            .put(urls.purchase + "/" + id + "/" + size + "/" + amount)
+            .then((resp) => {
+                return resp.data;
+            })
+            .catch((err) => {
+                throw err;
             })
     },
 
